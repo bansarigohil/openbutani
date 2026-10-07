@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Header from "@/components/Header";
+
 import {
   Globe2,
   ArrowLeftRight,
@@ -82,44 +84,13 @@ const tradeProcess = [
 export default function GlobalTradePage() {
   return (
     <main className="global-trade-page">
+
       {/* HEADER */}
-      <header className="global-trade-header">
-        <div className="global-trade-container global-trade-header-inner">
-          <a
-            href="/"
-            className="global-trade-logo"
-            aria-label="OpenButani home"
-          >
-            OpenButani
-          </a>
 
-          <nav
-            className="global-trade-nav"
-            aria-label="Main navigation"
-          >
-            <a href="/about">About</a>
-            <a href="/products">Products</a>
-            <a href="/industries">Industries</a>
-            <a
-              href="/global-trade"
-              aria-current="page"
-            >
-              Global Trade
-            </a>
-            <a href="/what-we-do">What We Do</a>
-            <a href="/contact">Contact</a>
-          </nav>
-
-          <a
-            href="/request-a-quote"
-            className="global-trade-header-cta"
-          >
-            Request a Quote
-          </a>
-        </div>
-      </header>
+      <Header />
 
       {/* HERO */}
+
       <section className="global-trade-hero">
         <div className="global-trade-hero-image">
           <Image
@@ -145,9 +116,8 @@ export default function GlobalTradePage() {
           </h1>
 
           <p className="global-trade-hero-description">
-            OpenButani connects international supply and
-            demand through sourcing, trading and supply
-            solutions across global markets.
+            OpenButani connects international supply and demand through
+            sourcing, trading and supply solutions across global markets.
           </p>
 
           <div className="global-trade-hero-actions">
@@ -156,6 +126,7 @@ export default function GlobalTradePage() {
               className="global-trade-primary-button"
             >
               Request a Quote
+
               <ArrowRight
                 size={18}
                 aria-hidden="true"
@@ -173,6 +144,7 @@ export default function GlobalTradePage() {
       </section>
 
       {/* INTRO */}
+
       <section className="global-trade-intro">
         <div className="global-trade-container global-trade-intro-grid">
           <div className="global-trade-intro-heading">
@@ -189,24 +161,23 @@ export default function GlobalTradePage() {
 
           <div className="global-trade-intro-content">
             <p>
-              International trade requires more than
-              connecting two businesses. It involves
-              understanding requirements, identifying
-              suitable supply opportunities and coordinating
-              product and commercial information.
+              International trade requires more than connecting two
+              businesses. It involves understanding requirements, identifying
+              suitable supply opportunities and coordinating product and
+              commercial information.
             </p>
 
             <p>
-              OpenButani works across international markets
-              to connect suppliers, manufacturers and buyers
-              through sourcing, trading and supply
-              coordination.
+              OpenButani works across international markets to connect
+              suppliers, manufacturers and buyers through sourcing, trading
+              and supply coordination.
             </p>
           </div>
         </div>
       </section>
 
       {/* TRADE NETWORK */}
+
       <section
         className="global-trade-network"
         id="trade-network"
@@ -226,9 +197,9 @@ export default function GlobalTradePage() {
             </div>
 
             <p>
-              OpenButani works as a connection point between
-              international supply sources and businesses
-              looking for products and sourcing opportunities.
+              OpenButani works as a connection point between international
+              supply sources and businesses looking for products and sourcing
+              opportunities.
             </p>
           </div>
 
@@ -247,8 +218,7 @@ export default function GlobalTradePage() {
               <h3>Suppliers</h3>
 
               <p>
-                International supply sources and
-                manufacturing relationships.
+                International supply sources and manufacturing relationships.
               </p>
             </div>
 
@@ -298,8 +268,7 @@ export default function GlobalTradePage() {
               <h3>Buyers</h3>
 
               <p>
-                Manufacturers, businesses and international
-                customers.
+                Manufacturers, businesses and international customers.
               </p>
             </div>
           </div>
@@ -307,6 +276,7 @@ export default function GlobalTradePage() {
       </section>
 
       {/* TRADE ACTIVITIES */}
+
       <section className="global-trade-activities">
         <div className="global-trade-container">
           <div className="global-trade-section-heading">
@@ -323,9 +293,8 @@ export default function GlobalTradePage() {
             </div>
 
             <p>
-              Our activities are focused on connecting
-              international supply opportunities with
-              business requirements.
+              Our activities are focused on connecting international supply
+              opportunities with business requirements.
             </p>
           </div>
 
@@ -359,6 +328,7 @@ export default function GlobalTradePage() {
                     className="global-trade-card-link"
                   >
                     Discuss Your Requirement
+
                     <ArrowRight
                       size={16}
                       aria-hidden="true"
@@ -372,6 +342,7 @@ export default function GlobalTradePage() {
       </section>
 
       {/* HOW TRADE WORKS */}
+
       <section className="global-trade-process">
         <div className="global-trade-container">
           <div className="global-trade-process-heading">
@@ -420,6 +391,7 @@ export default function GlobalTradePage() {
       </section>
 
       {/* GLOBAL PRESENCE */}
+
       <section className="global-trade-presence">
         <div className="global-trade-container global-trade-presence-grid">
           <div className="global-trade-presence-image">
@@ -443,16 +415,15 @@ export default function GlobalTradePage() {
             </h2>
 
             <p>
-              OpenButani&apos;s approach is designed around
-              international sourcing, trading and supply
-              relationships rather than a single local market.
+              OpenButani&apos;s approach is designed around international
+              sourcing, trading and supply relationships rather than a single
+              local market.
             </p>
 
             <p>
-              We focus on connecting relevant suppliers,
-              manufacturers and buyers according to product
-              requirements, commercial needs and destination
-              markets.
+              We focus on connecting relevant suppliers, manufacturers and
+              buyers according to product requirements, commercial needs and
+              destination markets.
             </p>
 
             <div className="global-trade-presence-points">
@@ -476,6 +447,7 @@ export default function GlobalTradePage() {
       </section>
 
       {/* FINAL CTA */}
+
       <section className="global-trade-final-cta">
         <div className="global-trade-container global-trade-final-cta-inner">
           <div>
@@ -490,9 +462,8 @@ export default function GlobalTradePage() {
             </h2>
 
             <p>
-              Tell us what you are looking for and let us
-              understand your international sourcing or
-              trading requirement.
+              Tell us what you are looking for and let us understand your
+              international sourcing or trading requirement.
             </p>
           </div>
 
@@ -501,6 +472,7 @@ export default function GlobalTradePage() {
             className="global-trade-primary-button"
           >
             Request a Quote
+
             <ArrowRight
               size={18}
               aria-hidden="true"
@@ -508,6 +480,7 @@ export default function GlobalTradePage() {
           </a>
         </div>
       </section>
+
     </main>
   );
 }

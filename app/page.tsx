@@ -1,8 +1,13 @@
-import Image from "next/image";
+"use client";
 
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeftRight, Boxes, Globe2 } from "lucide-react";
 
 export default function Home() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <main>
       {/* =========================
@@ -11,10 +16,13 @@ export default function Home() {
 
       <header className="site-header">
         <div className="header-container">
-          <a
+
+          {/* LOGO */}
+          <Link
             href="/"
             className="logo-link"
             aria-label="OpenButani home"
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             <Image
               src="/images/openbutani-logo-wordmark.png"
@@ -24,27 +32,118 @@ export default function Home() {
               priority
               className="site-logo"
             />
-          </a>
+          </Link>
 
+          {/* DESKTOP NAVIGATION */}
           <nav
             className="main-navigation"
             aria-label="Main navigation"
           >
-            <a href="/about">About</a>
-            <a href="/products">Products</a>
-            <a href="/industries">Industries</a>
-            <a href="/global-trade">Global Trade</a>
-            <a href="/what-we-do">What We Do</a>
-            <a href="/contact">Contact</a>
+            <Link href="/">Home</Link>
+            <Link href="/about">About</Link>
+            <Link href="/products">Products</Link>
+            <Link href="/industries">Industries</Link>
+            <Link href="/global-trade">Global Trade</Link>
+            <Link href="/what-we-do">What We Do</Link>
+            <Link href="/contact">Contact</Link>
           </nav>
 
-          <a
+          {/* DESKTOP QUOTE BUTTON */}
+          <Link
             href="/request-a-quote"
             className="header-quote-button"
           >
             Request a Quote
-          </a>
+          </Link>
+
+          {/* MOBILE MENU BUTTON */}
+          <button
+            type="button"
+            className={`mobile-menu-button ${
+              isMobileMenuOpen ? "is-open" : ""
+            }`}
+            aria-label={
+              isMobileMenuOpen
+                ? "Close navigation menu"
+                : "Open navigation menu"
+            }
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() =>
+              setIsMobileMenuOpen((open) => !open)
+            }
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
+
+        {/* MOBILE NAVIGATION */}
+        <nav
+          id="mobile-navigation"
+          className={`mobile-navigation ${
+            isMobileMenuOpen ? "is-open" : ""
+          }`}
+          aria-label="Mobile navigation"
+        >
+          <Link
+            href="/"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Home
+          </Link>
+
+          <Link
+            href="/about"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            About
+          </Link>
+
+          <Link
+            href="/products"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Products
+          </Link>
+
+          <Link
+            href="/industries"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Industries
+          </Link>
+
+          <Link
+            href="/global-trade"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Global Trade
+          </Link>
+
+          <Link
+            href="/what-we-do"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            What We Do
+          </Link>
+
+          <Link
+            href="/contact"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Contact
+          </Link>
+
+          <Link
+            href="/request-a-quote"
+            className="mobile-navigation-quote"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Request a Quote
+          </Link>
+        </nav>
       </header>
 
       {/* =========================
@@ -84,19 +183,19 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <a
+              <Link
                 href="/request-a-quote"
                 className="hero-button hero-button-primary"
               >
                 Request a Quote
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/products"
                 className="hero-button hero-button-secondary"
               >
                 Explore Products
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -111,8 +210,7 @@ export default function Home() {
           <span className="indicator-four" />
         </div>
       </section>
-
-      {/* =========================
+            {/* =========================
           TRADING PROPOSITION
       ========================== */}
 
@@ -167,7 +265,7 @@ export default function Home() {
                   specifications and commercial needs.
                 </p>
 
-                <a
+                <Link
                   href="/what-we-do"
                   className="trading-card-link"
                 >
@@ -175,7 +273,7 @@ export default function Home() {
                   <span aria-hidden="true">
                     →
                   </span>
-                </a>
+                </Link>
               </div>
             </article>
 
@@ -205,7 +303,7 @@ export default function Home() {
                   trading approach.
                 </p>
 
-                <a
+                <Link
                   href="/what-we-do"
                   className="trading-card-link"
                 >
@@ -213,7 +311,7 @@ export default function Home() {
                   <span aria-hidden="true">
                     →
                   </span>
-                </a>
+                </Link>
               </div>
             </article>
 
@@ -243,7 +341,7 @@ export default function Home() {
                   and industrial products.
                 </p>
 
-                <a
+                <Link
                   href="/what-we-do"
                   className="trading-card-link"
                 >
@@ -251,7 +349,7 @@ export default function Home() {
                   <span aria-hidden="true">
                     →
                   </span>
-                </a>
+                </Link>
               </div>
             </article>
           </div>
@@ -265,7 +363,7 @@ export default function Home() {
               Industrial supply
             </p>
 
-            <a
+            <Link
               href="/what-we-do"
               className="trading-bottom-link"
             >
@@ -273,7 +371,7 @@ export default function Home() {
               <span aria-hidden="true">
                 →
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -322,7 +420,7 @@ export default function Home() {
                   commercial supply requirements.
                 </p>
 
-                <a
+                <Link
                   href="/products"
                   className="product-category-link"
                 >
@@ -330,7 +428,7 @@ export default function Home() {
                   <span aria-hidden="true">
                     →
                   </span>
-                </a>
+                </Link>
               </div>
             </article>
 
@@ -349,7 +447,7 @@ export default function Home() {
                   industrial applications.
                 </p>
 
-                <a
+                <Link
                   href="/products"
                   className="product-category-link"
                 >
@@ -357,7 +455,7 @@ export default function Home() {
                   <span aria-hidden="true">
                     →
                   </span>
-                </a>
+                </Link>
               </div>
             </article>
 
@@ -376,7 +474,7 @@ export default function Home() {
                   manufacturing and supply requirements.
                 </p>
 
-                <a
+                <Link
                   href="/products"
                   className="product-category-link"
                 >
@@ -384,7 +482,7 @@ export default function Home() {
                   <span aria-hidden="true">
                     →
                   </span>
-                </a>
+                </Link>
               </div>
             </article>
           </div>
@@ -398,7 +496,7 @@ export default function Home() {
               Industrial Products
             </p>
 
-            <a
+            <Link
               href="/products"
               className="products-bottom-link"
             >
@@ -406,12 +504,11 @@ export default function Home() {
               <span aria-hidden="true">
                 →
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
-
-      {/* =========================
+            {/* =========================
           INDUSTRIES
       ========================== */}
 
@@ -440,7 +537,7 @@ export default function Home() {
           </div>
 
           <div className="industries-grid">
-            <a
+            <Link
               href="/industries/chemical-manufacturing"
               className="industry-card"
             >
@@ -465,9 +562,9 @@ export default function Home() {
               >
                 →
               </span>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/industries/pharmaceuticals"
               className="industry-card"
             >
@@ -492,9 +589,9 @@ export default function Home() {
               >
                 →
               </span>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/industries/plastics-packaging"
               className="industry-card"
             >
@@ -519,9 +616,9 @@ export default function Home() {
               >
                 →
               </span>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/industries/automotive"
               className="industry-card"
             >
@@ -546,9 +643,9 @@ export default function Home() {
               >
                 →
               </span>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/industries/construction"
               className="industry-card"
             >
@@ -573,9 +670,9 @@ export default function Home() {
               >
                 →
               </span>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/industries/water-treatment"
               className="industry-card"
             >
@@ -600,7 +697,7 @@ export default function Home() {
               >
                 →
               </span>
-            </a>
+            </Link>
           </div>
 
           <div className="industries-bottom">
@@ -612,7 +709,7 @@ export default function Home() {
               B2B solutions
             </p>
 
-            <a
+            <Link
               href="/industries"
               className="industries-bottom-link"
             >
@@ -620,7 +717,7 @@ export default function Home() {
               <span aria-hidden="true">
                 →
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -751,15 +848,14 @@ export default function Home() {
               Supply solutions
             </p>
 
-            <a href="/global-trade">
+            <Link href="/global-trade">
               Discover our global approach
               <span>→</span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
-
-      {/* =========================
+            {/* =========================
           QUALITY & COMPLIANCE
       ========================== */}
 
@@ -867,7 +963,7 @@ export default function Home() {
               Quality coordination
             </p>
 
-            <a
+            <Link
               href="/quality-compliance"
               className="quality-bottom-link"
             >
@@ -875,7 +971,7 @@ export default function Home() {
               <span aria-hidden="true">
                 →
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -1002,7 +1098,7 @@ export default function Home() {
               Long-term relationships
             </p>
 
-            <a
+            <Link
               href="/sustainability"
               className="sustainability-bottom-link"
             >
@@ -1010,12 +1106,11 @@ export default function Home() {
               <span aria-hidden="true">
                 →
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
-
-      {/* =========================
+            {/* =========================
           INSIGHTS
       ========================== */}
 
@@ -1062,7 +1157,7 @@ export default function Home() {
                   requirements and international trading activity.
                 </p>
 
-                <a
+                <Link
                   href="/insights"
                   className="insight-link"
                 >
@@ -1070,7 +1165,7 @@ export default function Home() {
                   <span aria-hidden="true">
                     →
                   </span>
-                </a>
+                </Link>
               </div>
             </article>
 
@@ -1093,7 +1188,7 @@ export default function Home() {
                   specifications and application requirements.
                 </p>
 
-                <a
+                <Link
                   href="/insights"
                   className="insight-link"
                 >
@@ -1101,7 +1196,7 @@ export default function Home() {
                   <span aria-hidden="true">
                     →
                   </span>
-                </a>
+                </Link>
               </div>
             </article>
 
@@ -1124,7 +1219,7 @@ export default function Home() {
                   international business relationships.
                 </p>
 
-                <a
+                <Link
                   href="/insights"
                   className="insight-link"
                 >
@@ -1132,7 +1227,7 @@ export default function Home() {
                   <span aria-hidden="true">
                     →
                   </span>
-                </a>
+                </Link>
               </div>
             </article>
           </div>
@@ -1146,7 +1241,7 @@ export default function Home() {
               International trade
             </p>
 
-            <a
+            <Link
               href="/insights"
               className="insights-bottom-link"
             >
@@ -1154,7 +1249,7 @@ export default function Home() {
               <span aria-hidden="true">
                 →
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -1182,7 +1277,7 @@ export default function Home() {
             </p>
 
             <div className="final-cta-actions">
-              <a
+              <Link
                 href="/request-a-quote"
                 className="final-cta-button"
               >
@@ -1190,14 +1285,14 @@ export default function Home() {
                 <span aria-hidden="true">
                   →
                 </span>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/contact"
                 className="final-cta-secondary"
               >
                 Contact OpenButani
-              </a>
+              </Link>
             </div>
           </div>
 

@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import Header from "@/components/Header";
+
 import {
   ArrowRight,
   Mail,
@@ -46,6 +47,7 @@ export default function ContactPage() {
           result.message ||
             "Please check your information and try again."
         );
+
         return;
       }
 
@@ -66,60 +68,12 @@ export default function ContactPage() {
 
   return (
     <main className="contact-page">
+
       {/* =========================
           HEADER
       ========================== */}
 
-      <header className="contact-header">
-        <div className="contact-header-inner">
-          <Link
-            href="/"
-            className="contact-logo"
-            aria-label="OpenButani home"
-          >
-            <Image
-              src="/images/openbutani-logo-wordmark.png"
-              alt="OpenButani"
-              width={629}
-              height={155}
-              priority
-            />
-          </Link>
-
-          <nav
-            className="contact-nav"
-            aria-label="Main navigation"
-          >
-            <Link href="/about">About</Link>
-
-            <Link href="/products">Products</Link>
-
-            <Link href="/industries">Industries</Link>
-
-            <Link href="/global-trade">
-              Global Trade
-            </Link>
-
-            <Link href="/what-we-do">
-              What We Do
-            </Link>
-
-            <Link
-              href="/contact"
-              className="active"
-            >
-              Contact
-            </Link>
-          </nav>
-
-          <Link
-            href="/request-a-quote"
-            className="contact-header-cta"
-          >
-            Request a Quote
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       {/* =========================
           HERO
@@ -429,6 +383,7 @@ export default function ContactPage() {
           </Link>
         </div>
       </section>
+
     </main>
   );
 }

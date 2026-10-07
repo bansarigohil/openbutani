@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import Header from "@/components/Header";
+
 import {
   ArrowRight,
   ChevronDown,
@@ -203,37 +205,20 @@ export default function ProductsPage() {
 
   return (
     <main className="products-page">
-      {/* HEADER */}
-      <header className="products-page-header">
-        <div className="products-page-header-inner">
-          <Link href="/" className="products-page-logo">
-            OpenButani
-          </Link>
 
-          <nav className="products-page-nav" aria-label="Main navigation">
-            <Link href="/about">About</Link>
-            <Link href="/products" className="active">
-              Products
-            </Link>
-            <Link href="/industries">Industries</Link>
-            <Link href="/global-trade">Global Trade</Link>
-            <Link href="/what-we-do">What We Do</Link>
-            <Link href="/contact">Contact</Link>
-          </nav>
+      {/* =========================
+          HEADER
+      ========================== */}
 
-          <Link
-            href="/request-a-quote"
-            className="products-page-quote"
-          >
-            Request a Quote
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       {/* HERO */}
+
       <section className="products-page-hero">
         <div className="products-page-container">
-          <p className="section-eyebrow">PRODUCTS & TRADING CATEGORIES</p>
+          <p className="section-eyebrow">
+            PRODUCTS & TRADING CATEGORIES
+          </p>
 
           <h1>
             Materials that move
@@ -247,7 +232,10 @@ export default function ProductsPage() {
           </p>
 
           <div className="products-page-hero-actions">
-            <a href="#product-catalogue" className="primary-product-button">
+            <a
+              href="#product-catalogue"
+              className="primary-product-button"
+            >
               Explore Catalogue
               <ArrowRight size={17} aria-hidden="true" />
             </a>
@@ -263,6 +251,7 @@ export default function ProductsPage() {
       </section>
 
       {/* CATEGORY INTRO */}
+
       <section className="products-category-section">
         <div className="products-page-container">
           <div className="products-section-heading">
@@ -291,6 +280,7 @@ export default function ProductsPage() {
 
               <div>
                 <h3>Chemicals</h3>
+
                 <p>
                   Chemical products and raw materials for industrial and
                   commercial supply requirements.
@@ -308,6 +298,7 @@ export default function ProductsPage() {
 
               <div>
                 <h3>Plastics &amp; Polymers</h3>
+
                 <p>
                   Polymer materials and related products for manufacturing,
                   packaging and industrial applications.
@@ -325,6 +316,7 @@ export default function ProductsPage() {
 
               <div>
                 <h3>Industrial Products</h3>
+
                 <p>
                   Industrial materials supporting manufacturing and supply
                   requirements.
@@ -338,6 +330,7 @@ export default function ProductsPage() {
       </section>
 
       {/* CATALOGUE */}
+
       <section
         className="products-catalogue-section"
         id="product-catalogue"
@@ -357,6 +350,7 @@ export default function ProductsPage() {
           </div>
 
           {/* SEARCH + FILTER */}
+
           <div className="catalogue-controls">
             <div className="catalogue-search">
               <Search size={18} aria-hidden="true" />
@@ -391,6 +385,7 @@ export default function ProductsPage() {
           </div>
 
           {/* A-Z */}
+
           <div className="catalogue-alphabet">
             <button
               type="button"
@@ -413,6 +408,7 @@ export default function ProductsPage() {
           </div>
 
           {/* RESULTS */}
+
           <div className="catalogue-result-header">
             <p>
               Showing <strong>{filteredProducts.length}</strong> product
@@ -474,6 +470,7 @@ export default function ProductsPage() {
       </section>
 
       {/* SUPPORT */}
+
       <section className="products-support-section">
         <div className="products-page-container">
           <div className="products-support-grid">
@@ -507,6 +504,7 @@ export default function ProductsPage() {
       </section>
 
       {/* FOOTER CTA */}
+
       <section className="products-final-cta">
         <div className="products-page-container">
           <p className="section-eyebrow">OPENBUTANI</p>
@@ -526,6 +524,7 @@ export default function ProductsPage() {
           </Link>
         </div>
       </section>
+
     </main>
   );
 }

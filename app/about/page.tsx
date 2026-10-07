@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Header from "@/components/Header";
+
 import {
   ArrowRight,
   Globe2,
@@ -142,30 +144,14 @@ const values = [
 export default function AboutPage() {
   return (
     <main className="about-page">
-      {/* Header */}
-      <header className="about-header">
-        <div className="about-header-inner">
-          <Link href="/" className="about-logo">
-            OpenButani
-          </Link>
+      {/* =========================
+          HEADER
+      ========================== */}
 
-          <nav className="about-nav" aria-label="Main navigation">
-            <Link href="/about">About</Link>
-            <Link href="/products">Products</Link>
-            <Link href="/industries">Industries</Link>
-            <Link href="/global-trade">Global Trade</Link>
-            <Link href="/what-we-do">What We Do</Link>
-            <Link href="/contact">Contact</Link>
-          </nav>
-
-          <Link href="/request-a-quote" className="about-header-cta">
-            Request a Quote
-            <ArrowRight size={16} />
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero */}
+
       <section className="about-hero">
         <div className="about-container">
           <div className="about-hero-content">
@@ -185,12 +171,18 @@ export default function AboutPage() {
             </p>
 
             <div className="about-hero-actions">
-              <Link href="/what-we-do" className="about-button-primary">
+              <Link
+                href="/what-we-do"
+                className="about-button-primary"
+              >
                 Explore What We Do
                 <ArrowRight size={17} />
               </Link>
 
-              <Link href="/request-a-quote" className="about-button-secondary">
+              <Link
+                href="/request-a-quote"
+                className="about-button-secondary"
+              >
                 Request a Quote
               </Link>
             </div>
@@ -199,6 +191,7 @@ export default function AboutPage() {
       </section>
 
       {/* Who We Are */}
+
       <section className="about-who">
         <div className="about-container">
           <div className="about-section-grid">
@@ -246,6 +239,7 @@ export default function AboutPage() {
       </section>
 
       {/* What We Trade */}
+
       <section className="about-trade">
         <div className="about-container">
           <div className="about-section-heading">
@@ -287,6 +281,7 @@ export default function AboutPage() {
       </section>
 
       {/* Where We Operate */}
+
       <section className="about-global">
         <div className="about-container">
           <div className="about-global-grid">
@@ -316,8 +311,10 @@ export default function AboutPage() {
             <div className="about-global-points">
               <div className="about-global-point">
                 <span>01</span>
+
                 <div>
                   <h3>Global Supply</h3>
+
                   <p>
                     Identifying suitable suppliers and sourcing opportunities.
                   </p>
@@ -326,8 +323,10 @@ export default function AboutPage() {
 
               <div className="about-global-point">
                 <span>02</span>
+
                 <div>
                   <h3>International Markets</h3>
+
                   <p>
                     Connecting supply with customers and commercial demand.
                   </p>
@@ -336,8 +335,10 @@ export default function AboutPage() {
 
               <div className="about-global-point">
                 <span>03</span>
+
                 <div>
                   <h3>Trade Corridors</h3>
+
                   <p>
                     Coordinating relevant origin, destination and logistics
                     requirements.
@@ -347,8 +348,10 @@ export default function AboutPage() {
 
               <div className="about-global-point">
                 <span>04</span>
+
                 <div>
                   <h3>Cross-Border Supply</h3>
+
                   <p>
                     Supporting documentation, commercial coordination and
                     international supply requirements.
@@ -361,6 +364,7 @@ export default function AboutPage() {
       </section>
 
       {/* What We Do */}
+
       <section className="about-services">
         <div className="about-container">
           <div className="about-section-heading">
@@ -385,7 +389,10 @@ export default function AboutPage() {
               const Icon = service.icon;
 
               return (
-                <div className="about-service-card" key={service.number}>
+                <div
+                  className="about-service-card"
+                  key={service.number}
+                >
                   <div className="about-service-top">
                     <span>{service.number}</span>
                     <Icon size={22} strokeWidth={1.7} />
@@ -402,6 +409,7 @@ export default function AboutPage() {
       </section>
 
       {/* How We Work */}
+
       <section className="about-process">
         <div className="about-container">
           <div className="about-process-heading">
@@ -422,7 +430,10 @@ export default function AboutPage() {
 
           <div className="about-process-list">
             {processSteps.map((step) => (
-              <div className="about-process-item" key={step.number}>
+              <div
+                className="about-process-item"
+                key={step.number}
+              >
                 <span>{step.number}</span>
 
                 <h3>{step.title}</h3>
@@ -435,6 +446,7 @@ export default function AboutPage() {
       </section>
 
       {/* Industries */}
+
       <section className="about-industries">
         <div className="about-container">
           <div className="about-industries-heading">
@@ -454,9 +466,14 @@ export default function AboutPage() {
 
           <div className="about-industry-grid">
             {industries.map((industry, index) => (
-              <div className="about-industry-item" key={industry}>
+              <div
+                className="about-industry-item"
+                key={industry}
+              >
                 <span>{String(index + 1).padStart(2, "0")}</span>
+
                 <strong>{industry}</strong>
+
                 <ArrowRight size={17} />
               </div>
             ))}
@@ -465,6 +482,7 @@ export default function AboutPage() {
       </section>
 
       {/* Why OpenButani */}
+
       <section className="about-values">
         <div className="about-container">
           <div className="about-section-heading">
@@ -486,7 +504,10 @@ export default function AboutPage() {
 
           <div className="about-values-list">
             {values.map((value, index) => (
-              <div className="about-value-item" key={value.title}>
+              <div
+                className="about-value-item"
+                key={value.title}
+              >
                 <span>{String(index + 1).padStart(2, "0")}</span>
 
                 <h3>{value.title}</h3>
@@ -499,6 +520,7 @@ export default function AboutPage() {
       </section>
 
       {/* Quality */}
+
       <section className="about-quality">
         <div className="about-container">
           <div className="about-quality-grid">
@@ -528,7 +550,10 @@ export default function AboutPage() {
                 <span>Regulatory Awareness</span>
               </div>
 
-              <Link href="/quality-compliance" className="about-text-link">
+              <Link
+                href="/quality-compliance"
+                className="about-text-link"
+              >
                 Explore Quality & Compliance
                 <ArrowRight size={17} />
               </Link>
@@ -538,6 +563,7 @@ export default function AboutPage() {
       </section>
 
       {/* Sustainability */}
+
       <section className="about-sustainability">
         <div className="about-container">
           <div className="about-sustainability-heading">
@@ -559,6 +585,7 @@ export default function AboutPage() {
           <div className="about-sustainability-grid">
             <div>
               <strong>Responsible Sourcing</strong>
+
               <p>
                 Working toward responsible and transparent sourcing
                 relationships.
@@ -567,6 +594,7 @@ export default function AboutPage() {
 
             <div>
               <strong>Supply-Chain Efficiency</strong>
+
               <p>
                 Supporting efficient coordination across international supply
                 processes.
@@ -575,6 +603,7 @@ export default function AboutPage() {
 
             <div>
               <strong>Resource Efficiency</strong>
+
               <p>
                 Considering opportunities to improve the efficient use of
                 resources across supply activities.
@@ -583,6 +612,7 @@ export default function AboutPage() {
 
             <div>
               <strong>Compliance</strong>
+
               <p>
                 Maintaining awareness of applicable commercial, regulatory and
                 supply requirements.
@@ -591,6 +621,7 @@ export default function AboutPage() {
 
             <div>
               <strong>Long-Term Partnerships</strong>
+
               <p>
                 Building relationships that support sustainable business over
                 the long term.
@@ -599,6 +630,7 @@ export default function AboutPage() {
 
             <div>
               <strong>Continuous Improvement</strong>
+
               <p>
                 Continuously improving how we source, coordinate and support
                 international supply.
@@ -606,7 +638,10 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <Link href="/sustainability" className="about-text-link">
+          <Link
+            href="/sustainability"
+            className="about-text-link"
+          >
             Explore Sustainability
             <ArrowRight size={17} />
           </Link>
@@ -614,6 +649,7 @@ export default function AboutPage() {
       </section>
 
       {/* Final CTA */}
+
       <section className="about-final-cta">
         <div className="about-container">
           <div className="about-final-cta-inner">
@@ -641,7 +677,10 @@ export default function AboutPage() {
                 <ArrowRight size={17} />
               </Link>
 
-              <Link href="/contact" className="about-button-secondary">
+              <Link
+                href="/contact"
+                className="about-button-secondary"
+              >
                 Contact OpenButani
               </Link>
             </div>

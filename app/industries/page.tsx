@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Header from "@/components/Header";
+
 import {
   Factory,
   Pill,
@@ -89,44 +91,17 @@ const industries = [
 export default function IndustriesPage() {
   return (
     <main className="industries-page">
+
       {/* =====================================================
           HEADER
       ===================================================== */}
-      <header className="industries-header">
-        <div className="industries-container industries-header-inner">
-          <a href="/" className="industries-logo" aria-label="OpenButani home">
-            OpenButani
-          </a>
 
-          <nav
-            className="industries-nav"
-            aria-label="Main navigation"
-          >
-            <a href="/about">About</a>
-            <a href="/products">Products</a>
-            <a
-              href="/industries"
-              aria-current="page"
-            >
-              Industries
-            </a>
-            <a href="/#global-trade">Global Trade</a>
-            <a href="/what-we-do">What We Do</a>
-            <a href="/contact">Contact</a>
-          </nav>
-
-          <a
-            href="/request-a-quote"
-            className="industries-header-cta"
-          >
-            Request a Quote
-          </a>
-        </div>
-      </header>
+      <Header />
 
       {/* =====================================================
           HERO
       ===================================================== */}
+
       <section className="industries-hero">
         <div className="industries-hero-image">
           <Image
@@ -152,9 +127,8 @@ export default function IndustriesPage() {
           </h1>
 
           <p className="industries-hero-description">
-            OpenButani connects businesses with international
-            sourcing, trading and supply solutions across a range
-            of industrial sectors.
+            OpenButani connects businesses with international sourcing,
+            trading and supply solutions across a range of industrial sectors.
           </p>
 
           <a
@@ -162,6 +136,7 @@ export default function IndustriesPage() {
             className="industries-primary-button"
           >
             Discuss Your Requirement
+
             <ArrowRight
               size={18}
               strokeWidth={2}
@@ -174,6 +149,7 @@ export default function IndustriesPage() {
       {/* =====================================================
           INTRO
       ===================================================== */}
+
       <section className="industries-intro">
         <div className="industries-container industries-intro-grid">
           <div className="industries-intro-heading">
@@ -190,18 +166,16 @@ export default function IndustriesPage() {
 
           <div className="industries-intro-text">
             <p>
-              Different industries have different material,
-              product and supply requirements. OpenButani works
-              across international markets to help connect those
-              requirements with appropriate sourcing and trading
-              opportunities.
+              Different industries have different material, product and supply
+              requirements. OpenButani works across international markets to
+              help connect those requirements with appropriate sourcing and
+              trading opportunities.
             </p>
 
             <p>
-              Our approach is requirement-driven, with attention
-              to product specifications, supply availability,
-              commercial requirements and international
-              coordination.
+              Our approach is requirement-driven, with attention to product
+              specifications, supply availability, commercial requirements and
+              international coordination.
             </p>
           </div>
         </div>
@@ -210,6 +184,7 @@ export default function IndustriesPage() {
       {/* =====================================================
           INDUSTRIES
       ===================================================== */}
+
       <section className="industries-list">
         <div className="industries-container">
           <div className="industries-section-heading">
@@ -224,9 +199,8 @@ export default function IndustriesPage() {
             </h2>
 
             <p>
-              Explore the industries that can benefit from
-              OpenButani&apos;s international sourcing and
-              trading approach.
+              Explore the industries that can benefit from OpenButani&apos;s
+              international sourcing and trading approach.
             </p>
           </div>
 
@@ -288,6 +262,7 @@ export default function IndustriesPage() {
       {/* =====================================================
           HOW WE SUPPORT
       ===================================================== */}
+
       <section className="industries-support">
         <div className="industries-container industries-support-grid">
           <div className="industries-support-heading">
@@ -312,9 +287,9 @@ export default function IndustriesPage() {
                 </h3>
 
                 <p>
-                  We start with your product, specification,
-                  quantity and destination requirements to
-                  identify suitable sourcing opportunities.
+                  We start with your product, specification, quantity and
+                  destination requirements to identify suitable sourcing
+                  opportunities.
                 </p>
               </div>
             </div>
@@ -328,9 +303,8 @@ export default function IndustriesPage() {
                 </h3>
 
                 <p>
-                  We connect international suppliers and
-                  buyers through trading and sourcing
-                  relationships across global markets.
+                  We connect international suppliers and buyers through
+                  trading and sourcing relationships across global markets.
                 </p>
               </div>
             </div>
@@ -344,9 +318,8 @@ export default function IndustriesPage() {
                 </h3>
 
                 <p>
-                  We coordinate product information,
-                  commercial requirements and supply details
-                  throughout the trading process.
+                  We coordinate product information, commercial requirements
+                  and supply details throughout the trading process.
                 </p>
               </div>
             </div>
@@ -357,6 +330,7 @@ export default function IndustriesPage() {
       {/* =====================================================
           FINAL CTA
       ===================================================== */}
+
       <section className="industries-final-cta">
         <div className="industries-container industries-final-cta-inner">
           <div>
@@ -371,8 +345,8 @@ export default function IndustriesPage() {
             </h2>
 
             <p>
-              Tell us what you are looking for and our team
-              can review your sourcing or supply requirement.
+              Tell us what you are looking for and our team can review your
+              sourcing or supply requirement.
             </p>
           </div>
 
@@ -390,6 +364,7 @@ export default function IndustriesPage() {
           </a>
         </div>
       </section>
+
     </main>
   );
 }

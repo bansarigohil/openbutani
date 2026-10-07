@@ -1,3 +1,5 @@
+import Header from "@/components/Header";
+
 import {
   Globe2,
   ArrowLeftRight,
@@ -89,50 +91,17 @@ const process = [
 export default function WhatWeDoPage() {
   return (
     <main className="what-we-do-page">
+
       {/* =====================================================
           HEADER
       ===================================================== */}
-      <header className="what-we-do-header">
-        <div className="what-we-do-container what-we-do-header-inner">
-          <a
-            href="/"
-            className="what-we-do-logo"
-            aria-label="OpenButani home"
-          >
-            OpenButani
-          </a>
 
-          <nav
-            className="what-we-do-nav"
-            aria-label="Main navigation"
-          >
-            <a href="/about">About</a>
-            <a href="/products">Products</a>
-            <a href="/industries">Industries</a>
-            <a href="/#global-trade">Global Trade</a>
-
-            <a
-              href="/what-we-do"
-              aria-current="page"
-            >
-              What We Do
-            </a>
-
-            <a href="/contact">Contact</a>
-          </nav>
-
-          <a
-            href="/request-a-quote"
-            className="what-we-do-header-cta"
-          >
-            Request a Quote
-          </a>
-        </div>
-      </header>
+      <Header />
 
       {/* =====================================================
           HERO
       ===================================================== */}
+
       <section className="what-we-do-hero">
         <div className="what-we-do-container what-we-do-hero-inner">
           <div className="what-we-do-hero-content">
@@ -158,6 +127,7 @@ export default function WhatWeDoPage() {
                 className="what-we-do-primary-button"
               >
                 Request a Quote
+
                 <ArrowRight
                   size={18}
                   aria-hidden="true"
@@ -196,6 +166,7 @@ export default function WhatWeDoPage() {
       {/* =====================================================
           INTRO
       ===================================================== */}
+
       <section className="what-we-do-intro">
         <div className="what-we-do-container what-we-do-intro-grid">
           <div>
@@ -234,6 +205,7 @@ export default function WhatWeDoPage() {
       {/* =====================================================
           SERVICES
       ===================================================== */}
+
       <section
         className="what-we-do-services"
         id="services"
@@ -290,6 +262,7 @@ export default function WhatWeDoPage() {
                     className="what-we-do-service-link"
                   >
                     Discuss Your Requirement
+
                     <ArrowRight
                       size={16}
                       aria-hidden="true"
@@ -305,6 +278,7 @@ export default function WhatWeDoPage() {
       {/* =====================================================
           HOW WE WORK
       ===================================================== */}
+
       <section className="what-we-do-process">
         <div className="what-we-do-container">
           <div className="what-we-do-process-heading">
@@ -343,6 +317,7 @@ export default function WhatWeDoPage() {
       {/* =====================================================
           TRADE NETWORK
       ===================================================== */}
+
       <section className="what-we-do-network">
         <div className="what-we-do-container">
           <div className="what-we-do-network-heading">
@@ -360,7 +335,9 @@ export default function WhatWeDoPage() {
           <div className="what-we-do-network-flow">
             <div className="what-we-do-network-node">
               <span>01</span>
+
               <strong>Suppliers</strong>
+
               <p>
                 International supply sources and
                 manufacturing relationships.
@@ -376,7 +353,9 @@ export default function WhatWeDoPage() {
 
             <div className="what-we-do-network-node what-we-do-network-node-main">
               <span>02</span>
+
               <strong>OpenButani</strong>
+
               <p>
                 Sourcing, trading and supply coordination.
               </p>
@@ -391,7 +370,9 @@ export default function WhatWeDoPage() {
 
             <div className="what-we-do-network-node">
               <span>03</span>
+
               <strong>Buyers</strong>
+
               <p>
                 Manufacturers, businesses and international
                 customers.
@@ -404,6 +385,7 @@ export default function WhatWeDoPage() {
       {/* =====================================================
           CTA
       ===================================================== */}
+
       <section className="what-we-do-final-cta">
         <div className="what-we-do-container what-we-do-final-cta-inner">
           <div>
@@ -428,6 +410,7 @@ export default function WhatWeDoPage() {
             className="what-we-do-primary-button"
           >
             Request a Quote
+
             <ArrowRight
               size={18}
               aria-hidden="true"
@@ -435,6 +418,7 @@ export default function WhatWeDoPage() {
           </a>
         </div>
       </section>
+
     </main>
   );
 }
