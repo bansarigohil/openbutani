@@ -3,12 +3,18 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Search } from "lucide-react";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+  };
+
+  const toggleSearch = () => {
+    setIsSearchOpen((open) => !open);
   };
 
   return (
@@ -46,13 +52,33 @@ export default function Header() {
           <Link href="/contact">Contact</Link>
         </nav>
 
-        {/* DESKTOP QUOTE BUTTON */}
-        <Link
-          href="/request-a-quote"
-          className="header-quote-button"
-        >
-          Request a Quote
-        </Link>
+        {/* HEADER ACTIONS */}
+        <div className="header-actions">
+
+          {/* SEARCH BUTTON */}
+          <button
+            type="button"
+            className="header-search-button"
+            aria-label={
+              isSearchOpen
+                ? "Close search"
+                : "Open search"
+            }
+            aria-expanded={isSearchOpen}
+            onClick={toggleSearch}
+          >
+            <Search size={20} strokeWidth={2} />
+          </button>
+
+          {/* DESKTOP QUOTE BUTTON */}
+          <Link
+            href="/request-a-quote"
+            className="header-quote-button"
+          >
+            Request a Quote
+          </Link>
+
+        </div>
 
         {/* MOBILE MENU BUTTON */}
         <button
@@ -75,6 +101,40 @@ export default function Header() {
           <span />
           <span />
         </button>
+      </div>
+
+      {/* SEARCH PANEL */}
+      <div
+        className={`header-search-panel ${
+          isSearchOpen ? "is-open" : ""
+        }`}
+      >
+        <form className="header-search-form">
+          <label
+            htmlFor="site-search"
+            className="sr-only"
+          >
+            Search OpenButani
+          </label>
+
+          <Search
+            size={20}
+            strokeWidth={2}
+            aria-hidden="true"
+          />
+
+          <input
+            id="site-search"
+            type="search"
+            name="search"
+            placeholder="Search products, industries, services..."
+            autoComplete="off"
+          />
+
+          <button type="submit">
+            Search
+          </button>
+        </form>
       </div>
 
       {/* MOBILE NAVIGATION */}

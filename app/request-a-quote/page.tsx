@@ -1,5 +1,7 @@
 "use client";
 
+import Header from "@/components/Header";
+
 import {
   ArrowRight,
   CheckCircle2,
@@ -8,6 +10,7 @@ import {
   PackageCheck,
   ShieldCheck,
 } from "lucide-react";
+
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -22,38 +25,24 @@ const requirements = [
 ];
 
 const requestQuoteSchema = z.object({
-  name: z
-    .string()
-    .min(2, "Please enter your full name."),
+  name: z.string().min(2, "Please enter your full name."),
 
-  company: z
-    .string()
-    .min(2, "Please enter your company name."),
+  company: z.string().min(2, "Please enter your company name."),
 
   email: z
     .string()
     .min(1, "Please enter your business email.")
     .email("Please enter a valid business email."),
 
-  phone: z
-    .string()
-    .min(6, "Please enter a valid phone number."),
+  phone: z.string().min(6, "Please enter a valid phone number."),
 
-  country: z
-    .string()
-    .min(2, "Please enter your country."),
+  country: z.string().min(2, "Please enter your country."),
 
-  product: z
-    .string()
-    .min(2, "Please enter the product you require."),
+  product: z.string().min(2, "Please enter the product you require."),
 
-  quantity: z
-    .string()
-    .min(1, "Please enter the required quantity."),
+  quantity: z.string().min(1, "Please enter the required quantity."),
 
-  unit: z
-    .string()
-    .min(1, "Please select a unit."),
+  unit: z.string().min(1, "Please select a unit."),
 
   specification: z
     .string()
@@ -63,9 +52,7 @@ const requestQuoteSchema = z.object({
     .string()
     .min(2, "Please describe the application."),
 
-  destination: z
-    .string()
-    .min(2, "Please enter the destination."),
+  destination: z.string().min(2, "Please enter the destination."),
 
   incoterm: z
     .string()
@@ -79,9 +66,7 @@ const requestQuoteSchema = z.object({
   document: z.any().optional(),
 });
 
-type RequestQuoteFormData = z.infer<
-  typeof requestQuoteSchema
->;
+type RequestQuoteFormData = z.infer<typeof requestQuoteSchema>;
 
 export default function RequestAQuotePage() {
   const {
@@ -96,6 +81,7 @@ export default function RequestAQuotePage() {
   } = useForm<RequestQuoteFormData>({
     resolver: zodResolver(requestQuoteSchema),
     mode: "onBlur",
+
     defaultValues: {
       name: "",
       company: "",
@@ -113,31 +99,57 @@ export default function RequestAQuotePage() {
     },
   });
 
-  const onSubmit = async (
-    data: RequestQuoteFormData
-  ) => {
+  const onSubmit = async (data: RequestQuoteFormData) => {
     try {
+      /*
+       * Create FormData so the form can send
+       * both normal fields and the uploaded document.
+       */
+      const formData = new FormData();
+
+      formData.append("name", data.name);
+      formData.append("company", data.company);
+      formData.append("email", data.email);
+      formData.append("phone", data.phone);
+      formData.append("country", data.country);
+      formData.append("product", data.product);
+      formData.append("quantity", data.quantity);
+      formData.append("unit", data.unit);
+      formData.append("specification", data.specification);
+      formData.append("application", data.application);
+      formData.append("destination", data.destination);
+      formData.append("incoterm", data.incoterm);
+      formData.append("message", data.message);
+
+      /*
+       * Add the uploaded document only when
+       * the user has selected a file.
+       */
+      const documentFile = data.document?.[0];
+
+      if (documentFile) {
+        formData.append("document", documentFile);
+      }
+
+      /*
+       * Do NOT manually set Content-Type.
+       * The browser automatically creates the correct
+       * multipart/form-data boundary for FormData.
+       */
       const response = await fetch("/api/quote", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: formData,
       });
 
       const result = await response.json();
 
       if (!response.ok) {
         throw new Error(
-          result.message ||
-            "Unable to submit your request."
+          result.message || "Unable to submit your request."
         );
       }
 
-      console.log(
-        "Quote request submitted:",
-        result
-      );
+      console.log("Quote request submitted:", result);
 
       reset();
     } catch (error) {
@@ -150,48 +162,13 @@ export default function RequestAQuotePage() {
 
   return (
     <main className="request-quote-page">
-      {/* HEADER */}
-      <header className="request-quote-header">
-        <div className="request-quote-container request-quote-header-inner">
-          <a
-            href="/"
-            className="request-quote-logo"
-            aria-label="OpenButani home"
-          >
-            <img
-              src="/images/openbutani-logo-wordmark.png"
-              alt="OpenButani"
-            />
-          </a>
-
-          <nav
-            className="request-quote-nav"
-            aria-label="Main navigation"
-          >
-            <a href="/about">About</a>
-            <a href="/products">Products</a>
-            <a href="/industries">Industries</a>
-            <a href="/global-trade">Global Trade</a>
-            <a href="/what-we-do">What We Do</a>
-            <a href="/contact">Contact</a>
-          </nav>
-
-          <a
-            href="/request-a-quote"
-            className="request-quote-header-cta"
-            aria-current="page"
-          >
-            Request a Quote
-          </a>
-        </div>
-      </header>
+      {/* SHARED HEADER */}
+      <Header />
 
       {/* HERO */}
       <section className="request-quote-hero">
         <div className="request-quote-container">
-          <p className="section-eyebrow">
-            REQUEST A QUOTE
-          </p>
+          <p className="section-eyebrow">REQUEST A QUOTE</p>
 
           <h1>
             Tell us what
@@ -277,9 +254,7 @@ export default function RequestAQuotePage() {
                   QUOTE REQUEST
                 </p>
 
-                <h2>
-                  Submit your requirement
-                </h2>
+                <h2>Submit your requirement</h2>
               </div>
 
               <FileText
@@ -373,7 +348,9 @@ export default function RequestAQuotePage() {
                     type="email"
                     placeholder="name@company.com"
                     autoComplete="email"
-                    aria-invalid={Boolean(errors.email)}
+                    aria-invalid={Boolean(
+                      errors.email
+                    )}
                     aria-describedby={
                       errors.email
                         ? "email-error"
@@ -402,7 +379,9 @@ export default function RequestAQuotePage() {
                     type="tel"
                     placeholder="+00 000 000 000"
                     autoComplete="tel"
-                    aria-invalid={Boolean(errors.phone)}
+                    aria-invalid={Boolean(
+                      errors.phone
+                    )}
                     aria-describedby={
                       errors.phone
                         ? "phone-error"
@@ -528,7 +507,9 @@ export default function RequestAQuotePage() {
                   <select
                     id="unit"
                     defaultValue=""
-                    aria-invalid={Boolean(errors.unit)}
+                    aria-invalid={Boolean(
+                      errors.unit
+                    )}
                     aria-describedby={
                       errors.unit
                         ? "unit-error"
@@ -540,26 +521,17 @@ export default function RequestAQuotePage() {
                       Select unit
                     </option>
 
-                    <option value="kg">
-                      KG
-                    </option>
-
-                    <option value="mt">
-                      MT
-                    </option>
-
+                    <option value="kg">KG</option>
+                    <option value="mt">MT</option>
                     <option value="tonnes">
                       Tonnes
                     </option>
-
                     <option value="litres">
                       Litres
                     </option>
-
                     <option value="pieces">
                       Pieces
                     </option>
-
                     <option value="other">
                       Other
                     </option>
@@ -695,38 +667,16 @@ export default function RequestAQuotePage() {
                       Select Incoterm
                     </option>
 
-                    <option value="EXW">
-                      EXW
-                    </option>
-
-                    <option value="FCA">
-                      FCA
-                    </option>
-
-                    <option value="FOB">
-                      FOB
-                    </option>
-
-                    <option value="CFR">
-                      CFR
-                    </option>
-
-                    <option value="CIF">
-                      CIF
-                    </option>
-
-                    <option value="DAP">
-                      DAP
-                    </option>
-
-                    <option value="DDP">
-                      DDP
-                    </option>
-
+                    <option value="EXW">EXW</option>
+                    <option value="FCA">FCA</option>
+                    <option value="FOB">FOB</option>
+                    <option value="CFR">CFR</option>
+                    <option value="CIF">CIF</option>
+                    <option value="DAP">DAP</option>
+                    <option value="DDP">DDP</option>
                     <option value="other">
                       Other
                     </option>
-
                     <option value="unknown">
                       Not sure
                     </option>
@@ -880,9 +830,7 @@ export default function RequestAQuotePage() {
             />
 
             <div>
-              <strong>
-                International sourcing
-              </strong>
+              <strong>International sourcing</strong>
 
               <p>
                 Connecting supply and demand across
@@ -899,9 +847,7 @@ export default function RequestAQuotePage() {
             />
 
             <div>
-              <strong>
-                Requirement focused
-              </strong>
+              <strong>Requirement focused</strong>
 
               <p>
                 Product, quantity, specification and
@@ -919,9 +865,7 @@ export default function RequestAQuotePage() {
             />
 
             <div>
-              <strong>
-                Professional coordination
-              </strong>
+              <strong>Professional coordination</strong>
 
               <p>
                 Supporting clear communication throughout
